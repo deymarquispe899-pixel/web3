@@ -1,0 +1,36 @@
+@model IEnumerable<Libro>
+@{
+    ViewData["Title"] = "Libros";
+}
+<h2>Gestión de Libros</h2>
+<p><a asp-action="Create" class="btn btn-primary">+ Nuevo libro</a></p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Titulo)</th>
+            <th>@Html.DisplayNameFor(m => m.Autor)</th>
+            <th>@Html.DisplayNameFor(m => m.Categoria)</th>
+            <th>@Html.DisplayNameFor(m => m.CantidadTotal)</th>
+            <th>@Html.DisplayNameFor(m => m.CantidadDisponible)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var libro in Model)
+    {
+        <tr>
+            <td>@libro.Titulo</td>
+            <td>@libro.Autor</td>
+            <td>@libro.Categoria</td>
+            <td>@libro.CantidadTotal</td>
+            <td>@libro.CantidadDisponible</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@libro.Id" class="btn btn-sm btn-outline-secondary">Editar</a>
+                <a asp-action="Details" asp-route-id="@libro.Id" class="btn btn-sm btn-outline-info">Detalles</a>
+                <a asp-action="Delete" asp-route-id="@libro.Id" class="btn btn-sm btn-outline-danger">Eliminar</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

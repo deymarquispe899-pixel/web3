@@ -1,0 +1,47 @@
+@model IEnumerable<Prestamo>
+@{
+    ViewData["Title"] = "Mis préstamos";
+}
+<h2>Mis préstamos</h2>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">Aún no tienes préstamos registrados.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Libro</th>
+                <th>Fecha préstamo</th>
+                <th>Fecha devolución esperada</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var prestamo in Model)
+        {
+            <tr>
+                <td>@prestamo.Libro?.Titulo</td>
+                <td>@prestamo.FechaPrestamo.ToShortDateString()</td>
+                <td>@prestamo.FechaDevolucionEsperada.ToShortDateString()</td>
+                <td>
+                    @switch (prestamo.Estado)
+                    {
+                        case EstadoPrestamo.Prestado:
+                            <span class="badge bg-warning text-dark">Prestado</span>
+                            break;
+                        case EstadoPrestamo.Devuelto:
+                            <span class="badge bg-success">Devuelto</span>
+                            break;
+                        default:
+                            <span class="badge bg-danger">Atrasado</span>
+                            break;
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

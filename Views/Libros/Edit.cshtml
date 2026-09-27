@@ -1,0 +1,46 @@
+@model Libro
+@{
+    ViewData["Title"] = "Editar libro";
+}
+<h2>Editar libro</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="Titulo" class="form-label"></label>
+        <input asp-for="Titulo" class="form-control" />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Autor" class="form-label"></label>
+        <input asp-for="Autor" class="form-control" />
+        <span asp-validation-for="Autor" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Isbn" class="form-label"></label>
+        <input asp-for="Isbn" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Editorial" class="form-label"></label>
+        <input asp-for="Editorial" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Categoria" class="form-label"></label>
+        <input asp-for="Categoria" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Anio" class="form-label"></label>
+        <input asp-for="Anio" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="CantidadTotal" class="form-label"></label>
+        <input asp-for="CantidadTotal" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="CantidadDisponible" class="form-label"></label>
+        <input asp-for="CantidadDisponible" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

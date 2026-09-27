@@ -1,0 +1,52 @@
+@model IEnumerable<Prestamo>
+@{
+    ViewData["Title"] = "Préstamos";
+}
+<h2>Préstamos</h2>
+<p><a asp-action="Create" class="btn btn-primary">+ Nuevo préstamo</a></p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Libro</th>
+            <th>Usuario</th>
+            <th>Fecha préstamo</th>
+            <th>Fecha devolución esperada</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var prestamo in Model)
+    {
+        <tr>
+            <td>@prestamo.Libro?.Titulo</td>
+            <td>@prestamo.Usuario?.Email</td>
+            <td>@prestamo.FechaPrestamo.ToShortDateString()</td>
+            <td>@prestamo.FechaDevolucionEsperada.ToShortDateString()</td>
+            <td>
+                @switch (prestamo.Estado)
+                {
+                    case EstadoPrestamo.Prestado:
+                        <span class="badge bg-warning text-dark">Prestado</span>
+                        break;
+                    case EstadoPrestamo.Devuelto:
+                        <span class="badge bg-success">Devuelto</span>
+                        break;
+                    default:
+                        <span class="badge bg-danger">Atrasado</span>
+                        break;
+                }
+            </td>
+            <td>
+                @if (prestamo.Estado != EstadoPrestamo.Devuelto)
+                {
+                    <form asp-action="Devolver" asp-route-id="@prestamo.Id" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-sm btn-outline-success">Marcar devuelto</button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

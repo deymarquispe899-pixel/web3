@@ -1,0 +1,17 @@
+@model Libro
+@{
+    ViewData["Title"] = "Eliminar libro";
+}
+<h2>Eliminar libro</h2>
+<p>¿Está seguro de que desea eliminar este libro?</p>
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Titulo)</dt>
+    <dd class="col-sm-9">@Model.Titulo</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Autor)</dt>
+    <dd class="col-sm-9">@Model.Autor</dd>
+</dl>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

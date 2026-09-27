@@ -1,0 +1,24 @@
+@model Libro
+@{
+    ViewData["Title"] = "Detalles del libro";
+}
+<h2>Detalles del libro</h2>
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Titulo)</dt>
+    <dd class="col-sm-9">@Model.Titulo</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Autor)</dt>
+    <dd class="col-sm-9">@Model.Autor</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Isbn)</dt>
+    <dd class="col-sm-9">@Model.Isbn</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Editorial)</dt>
+    <dd class="col-sm-9">@Model.Editorial</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Categoria)</dt>
+    <dd class="col-sm-9">@Model.Categoria</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Anio)</dt>
+    <dd class="col-sm-9">@Model.Anio</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.CantidadTotal)</dt>
+    <dd class="col-sm-9">@Model.CantidadTotal</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(m => m.CantidadDisponible)</dt>
+    <dd class="col-sm-9">@Model.CantidadDisponible</dd>
+</dl>
+<a asp-action="Index" class="btn btn-secondary">Volver</a>

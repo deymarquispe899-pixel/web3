@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Dashboard - Usuario";
+}
+<h2>Panel del Usuario</h2>
+<p class="text-muted">Bienvenido/a, @User.Identity!.Name</p>
+
+<div class="row g-3 mt-2">
+    <div class="col-md-6">
+        <div class="card text-bg-primary">
+            <div class="card-body">
+                <h5 class="card-title">Catálogo de libros</h5>
+                <p class="card-text">Consultar los libros disponibles en la biblioteca.</p>
+                <a asp-controller="Libros" asp-action="Catalogo" class="btn btn-light">Ver catálogo</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card text-bg-warning">
+            <div class="card-body">
+                <h5 class="card-title">Mis préstamos</h5>
+                <p class="card-text">Revisar los libros que has solicitado y su estado.</p>
+                <a asp-controller="Prestamos" asp-action="MisPrestamos" class="btn btn-light">Ver mis préstamos</a>
+            </div>
+        </div>
+    </div>
+</div>
